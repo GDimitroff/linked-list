@@ -3,10 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Gospodin Dimitrov <gospodindimitroff@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GDimitroff/linked-list.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GDimitroff/linked-list/issues"
+  },
+  "homepage": "https://github.com/GDimitroff/linked-list#readme"
 }
