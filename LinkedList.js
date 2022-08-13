@@ -1,4 +1,4 @@
-import Node from './Node.js';
+import ListNode from './ListNode.js';
 
 class LinkedList {
   constructor() {
@@ -20,7 +20,7 @@ class LinkedList {
   }
 
   append(value) {
-    const node = new Node(value);
+    const node = new ListNode(value);
 
     if (this.head === null) {
       this.head = node;
@@ -29,6 +29,21 @@ class LinkedList {
     }
 
     this.tail = node;
+    this.size++;
+  }
+
+  prepend(value) {
+    const node = new ListNode(value);
+
+    if (this.head === null) {
+      this.head = node;
+      this.tail = node;
+    } else {
+      const temp = this.head;
+      this.head = node;
+      node.next = temp;
+    }
+
     this.size++;
     return node;
   }
