@@ -95,6 +95,20 @@ class LinkedList {
 
     return false;
   }
+
+  find(value) {
+    let index = 0;
+    let temp = this.head;
+
+    while (temp) {
+      if (temp.value === value) return index;
+
+      temp = temp.next;
+      index++;
+    }
+
+    return null;
+  }
 }
 
 export default LinkedList;

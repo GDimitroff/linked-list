@@ -115,4 +115,13 @@ describe('Linked List', () => {
 
     expect(linkedList.contains('Second Node')).toBe(false);
   });
+
+  test('Find value return correct index or null', () => {
+    linkedList.append('First Node');
+    linkedList.append('Second Node');
+    linkedList.append('Third Node');
+
+    expect(linkedList.find('Second Node')).toBe(1);
+    expect(linkedList.find('Fourth Node')).toBe(null);
+  });
 });
