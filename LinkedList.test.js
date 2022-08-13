@@ -61,14 +61,37 @@ describe('Linked List', () => {
     expect(linkedList.at(2).value).toBe('Third Node');
   });
 
-  test('At function called on empty list', () => {
-    expect(linkedList.at(0)).toBe('List is empty!');
+  test('At function throws error when called on empty list', () => {
+    expect(() => {
+      linkedList.at(0);
+    }).toThrow('List is empty!');
   });
 
-  test('At function called with invalid index"', () => {
+  test('At function throws error when called with invalid index', () => {
     linkedList.append('First Node');
     linkedList.append('Second Node');
     linkedList.append('Third Node');
-    expect(linkedList.at(4)).toBe('Invalid index!');
+
+    expect(() => {
+      linkedList.at(4);
+    }).toThrow('Invalid index!');
+  });
+
+  test('Pop function throws error when called on empty list', () => {
+    expect(() => {
+      linkedList.pop();
+    }).toThrow('List is empty!');
+  });
+
+  test('Pop function throws error when called on empty list', () => {
+    linkedList.append('First Node');
+    linkedList.append('Second Node');
+    linkedList.append('Third Node');
+    linkedList.append('Fourth Node');
+    linkedList.pop();
+
+    expect(() => {
+      linkedList.at(3);
+    }).toThrow('Invalid index!');
   });
 });

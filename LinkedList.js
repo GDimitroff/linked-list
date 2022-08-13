@@ -51,7 +51,7 @@ class LinkedList {
 
   at(index) {
     if (!this.head) {
-      return 'List is empty!';
+      throw new Error('List is empty!');
     }
 
     let currentIndex = 0;
@@ -65,7 +65,22 @@ class LinkedList {
       currentIndex++;
     }
 
-    return 'Invalid index!';
+    throw new Error('Invalid index!');
+  }
+
+  pop() {
+    if (!this.head) {
+      throw new Error('List is empty!');
+    }
+
+    let temp = this.head;
+    while (temp.next.next) {
+      temp = temp.next;
+    }
+
+    temp.next = null;
+    this.tail = temp;
+    this.size--;
   }
 }
 
