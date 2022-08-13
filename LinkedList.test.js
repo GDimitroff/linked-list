@@ -52,7 +52,7 @@ describe('Linked List', () => {
     expect(linkedList.getSize()).toBe(2);
   });
 
-  test('At function returns the correct node', () => {
+  test('At method returns the correct node', () => {
     linkedList.append('First Node');
     linkedList.append('Second Node');
     linkedList.append('Third Node');
@@ -61,13 +61,13 @@ describe('Linked List', () => {
     expect(linkedList.at(2).value).toBe('Third Node');
   });
 
-  test('At function throws error when called on empty list', () => {
+  test('At method throws error when called on empty list', () => {
     expect(() => {
       linkedList.at(0);
     }).toThrow('List is empty!');
   });
 
-  test('At function throws error when called with invalid index', () => {
+  test('At method throws error when called with invalid index', () => {
     linkedList.append('First Node');
     linkedList.append('Second Node');
     linkedList.append('Third Node');
@@ -77,13 +77,13 @@ describe('Linked List', () => {
     }).toThrow('Invalid index!');
   });
 
-  test('Pop function throws error when called on empty list', () => {
+  test('Pop method throws error when called on empty list', () => {
     expect(() => {
       linkedList.pop();
     }).toThrow('List is empty!');
   });
 
-  test('Pop function removes last node', () => {
+  test('Pop method removes last node', () => {
     linkedList.append('First Node');
     linkedList.pop();
     linkedList.append('Second Node');
@@ -123,5 +123,17 @@ describe('Linked List', () => {
 
     expect(linkedList.find('Second Node')).toBe(1);
     expect(linkedList.find('Fourth Node')).toBe(null);
+  });
+
+  test('toString() returns correct output', () => {
+    expect(linkedList.toString()).toBe(null);
+
+    linkedList.append('First Node');
+    linkedList.append('Third Node');
+    linkedList.append('Second Node');
+
+    expect(linkedList.toString()).toBe(
+      '( First Node ) -> ( Third Node ) -> ( Second Node ) -> null'
+    );
   });
 });

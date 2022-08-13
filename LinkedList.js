@@ -109,6 +109,20 @@ class LinkedList {
 
     return null;
   }
+
+  toString() {
+    if (this.size === 0) return null;
+
+    let string = '';
+    let temp = this.head;
+    while (temp) {
+      string += `( ${temp.value} ) -> `;
+      temp = temp.next;
+    }
+
+    string += null;
+    return string;
+  }
 }
 
 export default LinkedList;
