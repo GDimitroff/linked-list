@@ -92,7 +92,27 @@ describe('Linked List', () => {
     linkedList.pop();
 
     expect(() => {
-      linkedList.at(3);
+      linkedList.at(2);
     }).toThrow('Invalid index!');
+
+    expect(() => {
+      linkedList.pop();
+      linkedList.pop();
+      linkedList.pop();
+    }).toThrow('List is empty!');
+  });
+
+  test('Contains returns true if searched value is found', () => {
+    linkedList.append('First Node');
+    linkedList.append('Second Node');
+    linkedList.append('Third Node');
+
+    expect(linkedList.contains('Second Node')).toBe(true);
+  });
+
+  test('Contains returns false if searched value is not found', () => {
+    linkedList.append('First Node');
+
+    expect(linkedList.contains('Second Node')).toBe(false);
   });
 });
