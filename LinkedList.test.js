@@ -83,8 +83,9 @@ describe('Linked List', () => {
     }).toThrow('List is empty!');
   });
 
-  test('Pop function throws error when called on empty list', () => {
+  test('Pop function removes last node', () => {
     linkedList.append('First Node');
+    linkedList.pop();
     linkedList.append('Second Node');
     linkedList.append('Third Node');
     linkedList.append('Fourth Node');

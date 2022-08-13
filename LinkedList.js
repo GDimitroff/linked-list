@@ -69,17 +69,19 @@ class LinkedList {
   }
 
   pop() {
-    if (!this.head) {
+    if (this.size === 0) {
       throw new Error('List is empty!');
     }
 
-    let temp = this.head;
-    while (temp.next.next) {
-      temp = temp.next;
+    if (this.size < 2) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      let temp = this.at(this.size - 2);
+      temp.next = null;
+      this.tail = temp;
     }
 
-    temp.next = null;
-    this.tail = temp;
     this.size--;
   }
 }
