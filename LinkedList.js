@@ -30,6 +30,7 @@ class LinkedList {
 
     this.tail = node;
     this.size++;
+    return node;
   }
 
   prepend(value) {
@@ -46,6 +47,25 @@ class LinkedList {
 
     this.size++;
     return node;
+  }
+
+  at(index) {
+    if (!this.head) {
+      return 'List is empty!';
+    }
+
+    let currentIndex = 0;
+    let temp = this.head;
+    while (temp) {
+      if (index === currentIndex) {
+        return temp;
+      }
+
+      temp = temp.next;
+      currentIndex++;
+    }
+
+    return 'Invalid index!';
   }
 }
 

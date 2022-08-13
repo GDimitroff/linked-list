@@ -51,4 +51,24 @@ describe('Linked List', () => {
     expect(linkedList.getTail().next).toBe(null);
     expect(linkedList.getSize()).toBe(2);
   });
+
+  test('At function returns the correct node', () => {
+    linkedList.append('First Node');
+    linkedList.append('Second Node');
+    linkedList.append('Third Node');
+
+    expect(linkedList.at(0).value).toBe('First Node');
+    expect(linkedList.at(2).value).toBe('Third Node');
+  });
+
+  test('At function called on empty list', () => {
+    expect(linkedList.at(0)).toBe('List is empty!');
+  });
+
+  test('At function called with invalid index"', () => {
+    linkedList.append('First Node');
+    linkedList.append('Second Node');
+    linkedList.append('Third Node');
+    expect(linkedList.at(4)).toBe('Invalid index!');
+  });
 });

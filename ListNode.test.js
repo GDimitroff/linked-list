@@ -1,7 +1,7 @@
 import ListNode from './ListNode';
 
 describe('List node', () => {
-  it('Should return node', () => {
+  it('Should return correct node', () => {
     const node = new ListNode('First');
     expect(node.value).toBe('First');
     expect(node.next).toBe(null);
