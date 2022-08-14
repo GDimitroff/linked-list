@@ -125,6 +125,54 @@ describe('Linked List', () => {
     }).toThrow('List is empty!');
   });
 
+  test('removeAt() throws error if index is not valid', () => {
+    expect(() => {
+      linkedList.removeAt(0);
+    }).toThrow('List is empty!');
+
+    linkedList.append('First Node');
+
+    expect(() => {
+      linkedList.removeAt(-1);
+    }).toThrow('Invalid index!');
+
+    expect(() => {
+      linkedList.removeAt(1);
+    }).toThrow('Invalid index!');
+  });
+
+  test('removeAt() works as expected when there is a single node in the list', () => {
+    linkedList.append('First Node');
+    linkedList.removeAt(0);
+    expect(linkedList.getHead()).toBe(null);
+    expect(linkedList.getTail()).toBe(null);
+  });
+
+  test('removeAt() works as expected when removing the node at last index', () => {
+    linkedList.append('First Node');
+    linkedList.append('Second Node');
+    linkedList.append('Third Node');
+    linkedList.removeAt(2);
+    expect(linkedList.getTail().value).toBe('Second Node');
+  });
+
+  test('removeAt() works as expected when removing the node in middle', () => {
+    linkedList.append('First Node');
+    linkedList.append('Second Node');
+    linkedList.append('Third Node');
+    linkedList.append('Fourth Node');
+    linkedList.removeAt(1);
+
+    expect(linkedList.getSize()).toBe(3);
+    expect(linkedList.getHead().value).toBe('First Node');
+    expect(linkedList.getTail().value).toBe('Fourth Node');
+
+    linkedList.removeAt(0);
+    expect(linkedList.getSize()).toBe(2);
+    expect(linkedList.getHead().value).toBe('Third Node');
+    expect(linkedList.getTail().value).toBe('Fourth Node');
+  });
+
   test('Contains returns true if searched value is found', () => {
     linkedList.append('First Node');
     linkedList.append('Second Node');

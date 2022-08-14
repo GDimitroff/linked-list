@@ -101,6 +101,26 @@ class LinkedList {
     this.size--;
   }
 
+  removeAt(index) {
+    if (this.size === 0) throw new Error('List is empty!');
+    if (index < 0 || index >= this.size) throw new Error('Invalid index!');
+
+    if (this.size === 1 || index === this.size - 1) {
+      this.pop();
+      return;
+    }
+
+    if (index === 0) {
+      this.head = this.head.next;
+    } else {
+      const prevNode = this.at(index - 1);
+      const currentNode = this.at(index);
+      prevNode.next = currentNode.next;
+    }
+
+    this.size--;
+  }
+
   contains(value) {
     let temp = this.head;
     while (temp) {
