@@ -52,6 +52,29 @@ describe('Linked List', () => {
     expect(linkedList.getSize()).toBe(2);
   });
 
+  test('inertAt inserts node at the given index', () => {
+    linkedList.insertAt('First Node', 0);
+    console.log(linkedList);
+    linkedList.append('Second Node');
+    linkedList.append('Third Node');
+    linkedList.append('Fifth Node');
+    linkedList.insertAt('Fourth Node', 3);
+    expect(linkedList.at(3).value).toBe('Fourth Node');
+  });
+
+  test('inertAt throws error if provided index is negative integer', () => {
+    expect(() => {
+      linkedList.insertAt('First Node', -1);
+    }).toThrow('Invalid index!');
+  });
+
+  test('inertAt inserts node at the end if the given index is greater than list size', () => {
+    linkedList.append('First Node');
+    linkedList.insertAt('Second Node', 2);
+
+    expect(linkedList.at(1).value).toBe('Second Node');
+  });
+
   test('At method returns the correct node', () => {
     linkedList.append('First Node');
     linkedList.append('Second Node');

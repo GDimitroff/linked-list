@@ -22,7 +22,7 @@ class LinkedList {
   append(value) {
     const node = new ListNode(value);
 
-    if (this.head === null) {
+    if (this.size === 0) {
       this.head = node;
     } else {
       this.tail.next = node;
@@ -36,7 +36,7 @@ class LinkedList {
   prepend(value) {
     const node = new ListNode(value);
 
-    if (this.head === null) {
+    if (this.size === 0) {
       this.head = node;
       this.tail = node;
     } else {
@@ -49,8 +49,24 @@ class LinkedList {
     return node;
   }
 
+  insertAt(value, index) {
+    if (index < 0) throw new Error('Invalid index!');
+
+    if (index === 0 || index >= this.size) {
+      this.append(value);
+      return;
+    }
+
+    const node = new ListNode(value);
+    const prevNode = this.at(index - 1);
+    const currentNode = this.at(index);
+    prevNode.next = node;
+    node.next = currentNode;
+    this.size++;
+  }
+
   at(index) {
-    if (!this.head) {
+    if (this.size === 0) {
       throw new Error('List is empty!');
     }
 
