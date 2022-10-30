@@ -18,3 +18,4 @@ The following methods are implemented:
 - `toString()` - stringifies the Linked List.
 - `insertAt(value, index)` - inserts a new nodes with the provided value at the given index.
 - `removeAt(index)` - removes the node at the given index.
+- `reverse()` - reversing the Linked List.
