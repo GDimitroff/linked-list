@@ -3,7 +3,7 @@ import ListNode from './ListNode.js';
 class LinkedList {
   constructor() {
     this.head = null;
-    this.tail = null;
+    this.tail = this.head;
     this.size = 0;
   }
 
@@ -52,17 +52,21 @@ class LinkedList {
   insertAt(value, index) {
     if (index < 0) throw new Error('Invalid index!');
 
-    if (index === 0 || index >= this.size) {
-      this.append(value);
-      return;
+    if (index === 0) {
+      return this.prepend(value);
+    }
+
+    if (index >= this.size) {
+      return this.append(value);
     }
 
     const node = new ListNode(value);
     const prevNode = this.at(index - 1);
-    const currentNode = this.at(index);
+    const currentNode = prevNode.next;
     prevNode.next = node;
     node.next = currentNode;
     this.size++;
+    return node;
   }
 
   at(index) {
@@ -70,18 +74,18 @@ class LinkedList {
       throw new Error('List is empty!');
     }
 
-    let currentIndex = 0;
-    let temp = this.head;
-    while (temp) {
-      if (index === currentIndex) {
-        return temp;
-      }
+    if (index < 0 || index >= this.size) {
+      throw new Error('Invalid index!');
+    }
 
-      temp = temp.next;
+    let currentIndex = 0;
+    let currentNode = this.head;
+    while (currentIndex !== index) {
+      currentNode = currentNode.next;
       currentIndex++;
     }
 
-    throw new Error('Invalid index!');
+    return currentNode;
   }
 
   pop() {
@@ -93,6 +97,8 @@ class LinkedList {
       this.head = null;
       this.tail = null;
     } else {
+      // Indexes in our list are starting from 0. We want to subtract 2 from the size
+      // so we can find the node which is before the node we want to remove.
       let temp = this.at(this.size - 2);
       temp.next = null;
       this.tail = temp;
@@ -114,7 +120,7 @@ class LinkedList {
       this.head = this.head.next;
     } else {
       const prevNode = this.at(index - 1);
-      const currentNode = this.at(index);
+      const currentNode = prevNode.next;
       prevNode.next = currentNode.next;
     }
 
