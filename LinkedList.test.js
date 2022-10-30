@@ -196,6 +196,31 @@ describe('Linked List', () => {
     expect(linkedList.find('Fourth Node')).toBe(null);
   });
 
+  test('reverse() empty list throws error', () => {
+    expect(() => {
+      linkedList.reverse();
+    }).toThrow('List is empty!');
+  });
+
+  test('reverse() list with one node', () => {
+    linkedList.append('First Node');
+    linkedList.reverse();
+
+    expect(linkedList.find('First Node')).toBe(0);
+    expect(linkedList.find('Fourth Node')).toBe(null);
+  });
+
+  test('reverse() works as expected', () => {
+    linkedList.append(1);
+    linkedList.append(2);
+    linkedList.append(3);
+    linkedList.append(4);
+    linkedList.reverse();
+
+    expect(linkedList.find(1)).toBe(3);
+    expect(linkedList.find(4)).toBe(0);
+  });
+
   test('toString() returns correct output', () => {
     expect(linkedList.toString()).toBe(null);
 

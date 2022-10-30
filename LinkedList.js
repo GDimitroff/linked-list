@@ -152,6 +152,23 @@ class LinkedList {
     return null;
   }
 
+  reverse() {
+    if (this.size === 0) throw new Error('List is empty!');
+    if (this.size < 2) return;
+
+    let prev = null;
+    let current = this.head;
+    this.tail = current;
+    while (current) {
+      const next = current.next;
+      current.next = prev;
+      prev = current;
+      current = next;
+    }
+
+    this.head = prev;
+  }
+
   toString() {
     if (this.size === 0) return null;
 
